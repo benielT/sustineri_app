@@ -1,85 +1,78 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <main>
+    <router-view />
+  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script>
+export default {
+  data() {
+    return {
+      width: 1920,
+      height: 1080,
+    }
+  },
+
+  mounted() {
+    const maintainAspectRatio = () => {
+      const designResolution = {
+        x: parseInt(this.width),
+        y: parseInt(this.height),
+      }
+      const designAspectRatio = designResolution.x / designResolution.y
+
+      const currentResolution = {
+        x: window.innerWidth,
+        y: window.innerHeight,
+      }
+      const currentAspectRatio = currentResolution.x / currentResolution.y
+
+      const isCurrentAspectRatioGreater =
+        currentAspectRatio >= designAspectRatio
+
+      const scale = {
+        x:
+          (isCurrentAspectRatioGreater
+            ? currentResolution.y * designAspectRatio
+            : currentResolution.x) / designResolution.x,
+        y:
+          (isCurrentAspectRatioGreater
+            ? currentResolution.y
+            : currentResolution.x / designAspectRatio) /
+          designResolution.y,
+      }
+
+      // center
+      const top = (currentResolution.y - this.height) / 2
+      const left = (currentResolution.x - this.width) / 2
+
+      const app = document.getElementById('app')
+      app.style.width = `${this.width}px`
+      app.style.height = `${this.height}px`
+      app.style.marginTop = `${top}px`
+      app.style.marginLeft = `${left}px`
+      app.style.transform = `scale(${scale.x}, ${scale.y})`
+    }
+
+    window.addEventListener('load', maintainAspectRatio)
+    window.addEventListener('resize', maintainAspectRatio)
+  },
+}
+</script>
+
+<style>
+@font-face {
+  font-family: 'Bebas Neue-Regular';
+  src: url("@/assets/fonts/BebasNeue-Regular.ttf");
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+@font-face {
+  font-family: 'Oswald-Light';
+  src: url('@/assets/fonts/Oswald-Light.ttf');
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+@font-face {
+  font-family: 'Oswald-Regular';
+  src: url('@/assets/fonts/Oswald-Regular.ttf');
 }
 </style>
