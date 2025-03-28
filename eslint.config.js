@@ -1,5 +1,5 @@
 import pluginVue from 'eslint-plugin-vue'
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import { defineConfigWithVueJs, vueJsConfigs } from '@vue/eslint-config-js'
 import pluginVitest from '@vitest/eslint-plugin'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -7,15 +7,15 @@ import pluginCypress from 'eslint-plugin-cypress/flat'
 import oxlint from 'eslint-plugin-oxlint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
-// To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
-// import { configureVueProject } from '@vue/eslint-config-typescript'
-// configureVueProject({ scriptLangs: ['ts', 'tsx'] })
-// More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
+// To allow more languages other than `js` in `.vue` files, uncomment the following lines:
+// import { configureVueProject } from '@vue/eslint-config-js'
+// configureVueProject({ scriptLangs: ['js'] })
+// More info at https://github.com/vuejs/eslint-config-js/#advanced-setup
 
-export default defineConfigWithVueTs(
+export default defineConfigWithVueJs(
   {
     name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
+    files: ['**/*.{js,mjs,vue}'],
   },
 
   {
@@ -24,20 +24,21 @@ export default defineConfigWithVueTs(
   },
 
   pluginVue.configs['flat/essential'],
-  vueTsConfigs.recommended,
-  
+  vueJsConfigs.recommended,
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
-  
+
   {
     ...pluginCypress.configs.recommended,
     files: [
-      'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
-      'cypress/support/**/*.{js,ts,jsx,tsx}'
+      'cypress/e2e/**/*.{cy,spec}.{js,mjs}',
+      'cypress/support/**/*.{js,mjs}'
     ],
   },
   ...oxlint.configs['flat/recommended'],
   skipFormatting,
 )
+
