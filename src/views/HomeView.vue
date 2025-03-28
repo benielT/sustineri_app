@@ -9,7 +9,7 @@
         <div class="header-buttons">
           <button class="btn-header">OUR STORY</button>
           <button class="btn-header">SUSTAINABILITY</button>
-          <button class="btn-header">COMMUNITY</button>
+          <button class="btn-header" @click="goToCommunity">COMMUNITY</button>
         </div>
 
         <button class="login-btn">LOGIN</button>
@@ -121,6 +121,10 @@ export default {
     gotoSDG() {
       window.open("https://sdgs.un.org/goals/goal11", "_blank");
     },
+
+    goToCommunity() {
+      this.$router.push("/community");
+    }
   },
 };
 </script>
@@ -131,9 +135,7 @@ export default {
 }
 
 .desktop-main .overlap-wrapper {
-  height: 1080px;
   overflow: hidden;
-  width: 1920px;
 }
 
 .desktop-main .overlap {
