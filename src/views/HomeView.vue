@@ -12,9 +12,7 @@
           <button class="btn-header">COMMUNITY</button>
         </div>
 
-        <button class="header-main-CTA">
-          <div class="text-wrapper-3">LOGIN</div>
-        </button>
+        <button class="login-btn">LOGIN</button>
 
         <div class="hero-section-heading">
           lorem ipsum
@@ -39,45 +37,44 @@
 
         <div class="rectangles">
           <div class="overlap-2">
-            <div class="group">
-              <div class="div-wrapper">
-                <div class="text-wrapper-4">OUR STORY</div>
+
+            <div @mouseover="hoverOnT = true" @mouseleave="hoverOnT = false" class="our-story-wrapper-anim" :class="{ 'expand-rect': hoverOnT, 'collapse-rect': !hoverOnT && hoverOnS || hoverOnC || hoverOnP }">
+              <div  class="our-story-wrapper">
+                <div class="our-story-text">OUR STORY</div>
+                <div class="tbd-text">TBD</div>
+                <img class="TBD-image" :class="{ 'TBD-image-expand': hoverOnT }" alt="Tbd image" :src="TBDImage" />
               </div>
             </div>
 
-            <div class="text-wrapper-5">TBD</div>
+            <div @mouseover="hoverOnS = true" @mouseleave="hoverOnS = false" class="sustainability-wrapper-anim" :class="{ 'expand-rect-s': hoverOnS, 's-to-left': !hoverOnS && hoverOnT, 's-to-right': !hoverOnS && hoverOnC || hoverOnP }">
+              <div class="sustainability-wrapper">
+                <div class="sustainability-text">SUSTAINABILITY</div>
+              </div>
+              <div class="sustainability-text-2">SUSTAINABILITY</div>
+            </div>
 
-            <img class="TBD-image" alt="Tbd image" :src="TBDImage" />
 
-            <div class="overlap-group-wrapper">
-              <div class="RESOURCES-wrapper">
-                <div class="RESOURCES">SUSTAINABILITY</div>
+            <div @mouseover="hoverOnC = true" @mouseleave="hoverOnC = false" class="community-wrapper-anim" :class="{ 'expand-rect-c': hoverOnC, 'c-to-left': !hoverOnC && hoverOnT || hoverOnS, 'c-to-right': !hoverOnC && hoverOnP }">
+              <div class="community-wrapper">
+                <div class="community-text">COMMUNITY</div>
+                <div class="community-text-2">COMMUNITY</div>
               </div>
             </div>
 
-            <div class="EVENTS">SUSTAINABILITY</div>
 
-            <div class="group-2">
-              <div class="overlap-3">
-                <div class="text-wrapper-6">COMMUNITY</div>
-              </div>
-            </div>
-
-            <div class="text-wrapper-7">COMMUNITY</div>
-
-            <img
+            <!-- <img
               class="explore-image"
               alt="Explore image"
               :src="exploreImage"
-            />
+            /> -->
 
-            <div class="group-3">
-              <div class="overlap-4">
-                <div class="text-wrapper-8">YOUR PROFILE</div>
+            <div @mouseover="hoverOnP = true" @mouseleave="hoverOnP = false" class="your-profile-wrapper-anim" :class="{ 'expand-rect-p': hoverOnP, 'p-to-left': !hoverOnP && hoverOnT || hoverOnC || hoverOnS }">
+              <div class="your-profile-wrapper">
+                <div class="your-profile-text">YOUR PROFILE</div>
+                <div class="your-profile-text-2">PROFILE</div>
               </div>
             </div>
 
-            <div class="text-wrapper-9">PROFILE</div>
           </div>
         </div>
 
@@ -94,14 +91,30 @@ import group12 from "@/assets/sustainable_cities_logo.png";
 import arrow from "@/assets/arrow.png";
 
 export default {
-  name: "DesktopMain",
+  name: "Main",
   data() {
     return {
       TBDImage,
       background,
       group12,
       arrow,
+      hoverOnT: false,
+      hoverOnS: false,
+      hoverOnC: false,
+      hoverOnP: false,
+      sizeT: 242,
+      sizeS: 242,
+      sizeC: 242,
+      sizeP: 242
     };
+  },
+
+  watch: {
+    hoverOnT() {
+      if (this.hoverOnT) {
+        this.sizeT = 500;
+      }
+    }
   },
 
   methods: {
@@ -209,11 +222,12 @@ export default {
   white-space: nowrap;
 }
 
-.desktop-main .header-main-CTA {
-  all: unset;
+.desktop-main .login-btn {
+  background: none;
   align-items: center;
   border: 4px solid;
   border-color: #dddddd;
+  font-family: "Bebas Neue-Regular", Helvetica;
   box-sizing: border-box;
   display: inline-flex;
   flex-direction: column;
@@ -224,7 +238,18 @@ export default {
   top: 56px;
 }
 
-.desktop-main .text-wrapper-3 {
+.desktop-main .login-btn:hover {
+  background-color: #dddddd;
+  color: #181818;
+}
+
+.desktop-main .login-btn:active {
+  background-color: #dddddd;
+  color: #181818;
+  opacity: 0.8;
+}
+
+.desktop-main .login-btn {
   color: #dddddd;
   font-family: "Bebas Neue-Regular", Helvetica;
   font-size: 36px;
@@ -337,7 +362,7 @@ export default {
   width: 2163px;
 }
 
-.desktop-main .group {
+.desktop-main .our-story-wrapper-anim {
   height: 720px;
   left: 0;
   position: absolute;
@@ -345,14 +370,72 @@ export default {
   width: 242px;
 }
 
-.desktop-main .div-wrapper {
+.desktop-main .our-story-wrapper {
   background-color: #c85c5c;
   height: 720px;
   position: relative;
-  width: 240px;
+  width: 100%;
 }
 
-.desktop-main .text-wrapper-4 {
+.desktop-main .collapse-rect {
+  width: 50px !important;
+  transition: width 0.5s ease;
+}
+
+.desktop-main .expand-rect {
+  width: 680px !important;
+  transition: width 0.5s ease;
+}
+
+.desktop-main .expand-rect-s {
+  width: 700px !important;
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 50px !important;
+}
+
+.desktop-main .expand-rect-c {
+  width: 700px !important;
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 120px !important;
+}
+
+.desktop-main .expand-rect-p {
+  width: 700px !important;
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 170px !important;
+}
+
+.desktop-main .s-to-left {
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 680px !important;
+  width: 70px !important;
+}
+
+.desktop-main .s-to-right {
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 50px !important;
+  width: 70px !important;
+}
+
+.desktop-main .c-to-left {
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 750px !important;
+  width: 70px !important;
+}
+
+.desktop-main .c-to-right {
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 100px !important;
+  width: 70px !important;
+}
+
+.desktop-main .p-to-left {
+  transition: width 0.5s ease, left 0.5s ease;
+  left: 820px !important;
+  width: 70px !important;
+}
+
+.desktop-main .our-story-text {
   color: #303030;
   font-family: "Oswald-Regular", Helvetica;
   font-size: 20px;
@@ -366,7 +449,7 @@ export default {
   white-space: nowrap;
 }
 
-.desktop-main .text-wrapper-5 {
+.desktop-main .tbd-text {
   color: #303030;
   font-family: "Bebas Neue-Regular", Helvetica;
   font-size: 432px;
@@ -375,20 +458,25 @@ export default {
   letter-spacing: -17.28px;
   line-height: 188px;
   position: absolute;
-  top: 304px;
+  top: 150px;
   white-space: nowrap;
 }
 
 .desktop-main .TBD-image {
-  height: 160px;
+  width: 100%;
+  height: 25%;
   left: 0;
   object-fit: cover;
   position: absolute;
-  top: 704px;
-  width: 240px;
+  bottom: 0;
 }
 
-.desktop-main .overlap-group-wrapper {
+.desktop-main .TBD-image-expand {
+  height: 35%;
+  transition: height 0.5s ease;
+}
+
+.desktop-main .sustainability-wrapper-anim {
   height: 760px;
   left: 240px;
   position: absolute;
@@ -396,14 +484,14 @@ export default {
   width: 226px;
 }
 
-.desktop-main .RESOURCES-wrapper {
+.desktop-main .sustainability-wrapper {
   background-color: #f9975d;
   height: 760px;
   position: relative;
-  width: 224px;
+  width: 100%;
 }
 
-.desktop-main .RESOURCES {
+.desktop-main .sustainability-text {
   color: #303030;
   font-family: "Oswald-Regular", Helvetica;
   font-size: 20px;
@@ -417,20 +505,20 @@ export default {
   white-space: nowrap;
 }
 
-.desktop-main .EVENTS {
+.desktop-main .sustainability-text-2 {
   color: #303030;
   font-family: "Bebas Neue-Regular", Helvetica;
   font-size: 432px;
   font-weight: 400;
-  left: 322px;
+  left: 100px;
   letter-spacing: -17.28px;
   line-height: 188px;
   position: absolute;
-  top: 296px;
+  top: 190px;
   white-space: nowrap;
 }
 
-.desktop-main .group-2 {
+.desktop-main .community-wrapper-anim {
   height: 800px;
   left: 464px;
   position: absolute;
@@ -438,14 +526,14 @@ export default {
   width: 218px;
 }
 
-.desktop-main .overlap-3 {
+.desktop-main .community-wrapper {
   background-color: #fbd148;
   height: 800px;
   position: relative;
-  width: 216px;
+  width: 100%;
 }
 
-.desktop-main .text-wrapper-6 {
+.desktop-main .community-text {
   color: #303030;
   font-family: "Oswald-Regular", Helvetica;
   font-size: 20px;
@@ -459,16 +547,16 @@ export default {
   white-space: nowrap;
 }
 
-.desktop-main .text-wrapper-7 {
+.desktop-main .community-text-2 {
   color: #303030;
   font-family: "Bebas Neue-Regular", Helvetica;
   font-size: 432px;
   font-weight: 400;
-  left: 530px;
+  left: 60px;
   letter-spacing: -17.28px;
   line-height: 188px;
   position: absolute;
-  top: 296px;
+  top: 230px;
   white-space: nowrap;
 }
 
@@ -481,7 +569,7 @@ export default {
   width: 216px;
 }
 
-.desktop-main .group-3 {
+.desktop-main .your-profile-wrapper-anim {
   height: 760px;
   left: 680px;
   position: absolute;
@@ -489,14 +577,14 @@ export default {
   width: 198px;
 }
 
-.desktop-main .overlap-4 {
+.desktop-main .your-profile-wrapper {
   background-color: #b2ea70;
   height: 760px;
   position: relative;
-  width: 196px;
+  width: 100%;
 }
 
-.desktop-main .text-wrapper-8 {
+.desktop-main .your-profile-text {
   color: #303030;
   font-family: "Oswald-Regular", Helvetica;
   font-size: 20px;
@@ -510,16 +598,16 @@ export default {
   white-space: nowrap;
 }
 
-.desktop-main .text-wrapper-9 {
+.desktop-main .your-profile-text-2 {
   color: #303030;
   font-family: "Bebas Neue-Regular", Helvetica;
   font-size: 432px;
   font-weight: 400;
-  left: 728px;
+  left: 40px;
   letter-spacing: -17.28px;
   line-height: 188px;
   position: absolute;
-  top: 296px;
+  top: 180px;
   white-space: nowrap;
 }
 
