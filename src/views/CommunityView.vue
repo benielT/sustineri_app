@@ -60,7 +60,7 @@
         </div>
         <div class="overlap-4">
           <div class="text-wrapper-5">Type your content...</div>
-          <img class="bar" alt="Bar" src="./bar.png" />
+          <!-- <img class="bar" alt="Bar" src="./bar.png" /> -->
         </div>
         <div class="frame-2">
           <div class="overlap-group-3">
