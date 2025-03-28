@@ -7,11 +7,9 @@
         <div class="logo" />
 
         <div class="header-buttons">
-          <div class="text-wrapper">OUR STORY</div>
-
-          <div class="div">SUSTAINABILITY</div>
-
-          <div class="text-wrapper-2">COMMUNITY</div>
+          <button class="btn-header">OUR STORY</button>
+          <button class="btn-header">SUSTAINABILITY</button>
+          <button class="btn-header">COMMUNITY</button>
         </div>
 
         <button class="header-main-CTA">
@@ -83,7 +81,7 @@
           </div>
         </div>
 
-        <img class="group-4" alt="Group" :src="group12" />
+        <button class="sdg-img" alt="Click to go to SDG 11's goals" @click="gotoSDG" />
       </div>
     </div>
   </div>
@@ -104,6 +102,12 @@ export default {
       group12,
       arrow,
     };
+  },
+
+  methods: {
+    gotoSDG() {
+      window.open("https://sdgs.un.org/goals/goal11", "_blank");
+    },
   },
 };
 </script>
@@ -149,6 +153,21 @@ export default {
   position: absolute;
   top: 66px;
   width: 526px;
+  display: flex;
+  flex-direction: row;
+}
+
+.desktop-main .btn-header {
+  color: #dddddd;
+  font-family: "Bebas Neue-Regular", Helvetica;
+  background: none;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 48px;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
 }
 
 .desktop-main .text-wrapper {
@@ -504,11 +523,13 @@ export default {
   white-space: nowrap;
 }
 
-.desktop-main .group-4 {
+.desktop-main .sdg-img {
   height: 60px;
   left: 80px;
   position: absolute;
   top: 940px;
   width: 230px;
+  background: no-repeat center url('@/assets/sustainable_cities_logo.png');
+  border: none;
 }
 </style>

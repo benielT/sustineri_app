@@ -75,4 +75,8 @@ export default {
   font-family: 'Oswald-Regular';
   src: url('@/assets/fonts/Oswald-Regular.ttf');
 }
+
+button {
+  cursor: pointer;
+}
 </style>
