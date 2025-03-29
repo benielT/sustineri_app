@@ -7,7 +7,7 @@
         <div class="logo" />
 
         <div class="header-buttons">
-          <button class="btn-header">OUR STORY</button>
+          <button class="btn-header" @click="goToAbout">OUR STORY</button>
           <button class="btn-header">SUSTAINABILITY</button>
           <button class="btn-header" @click="goToCommunity">COMMUNITY</button>
         </div>
@@ -39,9 +39,9 @@
           <div class="overlap-2">
 
             <div @mouseover="hoverOnT = true" @mouseleave="hoverOnT = false" class="our-story-wrapper-anim" :class="{ 'expand-rect': hoverOnT, 'collapse-rect': !hoverOnT && hoverOnS || hoverOnC || hoverOnP }">
-              <div  class="our-story-wrapper">
+              <div  class="our-story-wrapper" @click="goToAbout">
                 <div class="our-story-text">OUR STORY</div>
-                <div class="tbd-text">TBD</div>
+                <div class="tbd-text">STORY</div>
                 <img class="TBD-image" :class="{ 'TBD-image-expand': hoverOnT }" alt="Tbd image" :src="TBDImage" />
               </div>
             </div>
@@ -55,7 +55,7 @@
 
 
             <div @mouseover="hoverOnC = true" @mouseleave="hoverOnC = false" class="community-wrapper-anim" :class="{ 'expand-rect-c': hoverOnC, 'c-to-left': !hoverOnC && hoverOnT || hoverOnS, 'c-to-right': !hoverOnC && hoverOnP }">
-              <div class="community-wrapper">
+              <div class="community-wrapper" @click="goToCommunity">
                 <div class="community-text">COMMUNITY</div>
                 <div class="community-text-2">COMMUNITY</div>
               </div>
@@ -124,6 +124,10 @@ export default {
 
     goToCommunity() {
       this.$router.push("/community");
+    },
+
+    goToAbout() {
+      this.$router.push("/about");
     }
   },
 };
