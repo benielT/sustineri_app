@@ -1,11 +1,12 @@
 <template>
-    <div class="body">
+    <div class="login">
       <div class="overlap">
         <div class="login-post">
           <div class="frame">
             <div class="overlap-group">
-              <div class="rectangle" />
-              <div class="text-wrapper">Log in</div>
+              <button class="login-button">
+                <div class="login-button-text">Log in</div>
+              </button>
             </div>
           </div>
           <div class="div">Log In</div>
@@ -34,27 +35,27 @@
   
   <script>
   export default {
-    name: "Body",
+    name: "login",
   };
   </script>
   
   <style>
   
 
-  .body {
+  .login {
     background-color: #ffffff;
     display: grid;
     height: 100vh; /* Height window (vh) */
    }
   
-  .body .overlap {
+  .login .overlap {
     background-color: #dddddd;
     min-height: 100%;
     min-width: 100%;
     position: absolute;
   }
   
-  .login-post {
+  .login .login-post {
     background-color: #f6f6f6;
     height: 841px;
     left: 35vw;
@@ -63,7 +64,7 @@
     width: 579px;
   }
   
-  .body .frame {
+  .login .frame {
     border: 4px solid;
     border-color: #000000;
     height: 53px;
@@ -73,23 +74,23 @@
     width: 181px;
   }
   
-  .body .overlap-group {
+  .login .overlap-group {
     height: 51px;
     position: relative;
     top: -2px;
     width: 177px;
   }
   
-  .body .rectangle {
+  .login .login-button {
     background-color: #fbd148;
-    height: 49px;
+    height: 44px;
     left: 0;
     position: absolute;
     top: 2px;
-    width: 177px;
+    width: 172px;
   }
   
-  .body .text-wrapper {
+  .login .login-button-text {
     color: #000000;
     font-family: "Bebas Neue-Regular", Helvetica;
     font-size: 36px;
@@ -105,7 +106,7 @@
     width: 177px;
   }
   
-  .body .div {
+  .login .div {
     color: #000000;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 48px;
@@ -119,7 +120,7 @@
     white-space: nowrap;
   }
   
-  .body .email-text {
+  .login .email-text {
     color: #000000;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 24px;
@@ -133,7 +134,7 @@
     white-space: nowrap;
   }
   
-  .body .email-frame {
+  .login .email-frame {
     align-items: center;
     background-color: #fbd1484c;
     border: 2px solid;
@@ -148,7 +149,7 @@
     width: 422px;
   }
   
-  .body .text-wrapper-3 {
+  .login .text-wrapper-3 {
     color: #2c2c2d;
     background-color: #fbd1484c;
     font-family: "Oswald-Regular", Helvetica;
@@ -161,7 +162,7 @@
     width: 422px;
   }
   
-  .body .text-wrapper-4 {
+  .login .text-wrapper-4 {
     color: #000000;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 24px;
@@ -175,7 +176,7 @@
     white-space: nowrap;
   }
   
-  .body .password-frame {
+  .login .password-frame {
     align-items: center;
     background-color: #fbd1484c;
     border: 2px solid;
@@ -190,7 +191,7 @@
     width: 422px;
   }
   
-  .body .frame-3 {
+  .login .frame-3 {
     align-items: center;
     background-color: #f9975d;
     border: 2px solid;
@@ -204,7 +205,7 @@
     top: 568px;
   }
   
-  .body .text-wrapper-5 {
+  .login .text-wrapper-5 {
     color: #000000;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 28px;
@@ -218,7 +219,7 @@
     width: fit-content;
   }
   
-  .body .frame-4 {
+  .login .frame-4 {
     align-items: center;
     background-color: #f9975d;
     border: 2px solid;
@@ -232,7 +233,7 @@
     top: 636px;
   }
   
-  .body .not-registered {
+  .login .not-registered {
     color: #000000;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 28px;
@@ -247,7 +248,7 @@
     white-space: nowrap;
   }
   
-  .body .span {
+  .login .span {
     color: #000000;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 28px;
@@ -256,7 +257,7 @@
     line-height: 48px;
   }
   
-  .body .text-wrapper-6 {
+  .login .text-wrapper-6 {
     text-decoration: underline;
   }
   </style>
