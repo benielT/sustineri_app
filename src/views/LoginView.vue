@@ -9,13 +9,13 @@
             </div>
           </div>
           <div class="div">Log In</div>
-          <div class="text-wrapper-2">Email Address</div>
-          <div class="div-wrapper">
+          <div class="email-text">Email Address</div>
+          <div class="email-frame">
             <input type="text" class="text-wrapper-3" placeholder="Enter your email here..."/>
           </div>
           <div class="text-wrapper-4">Password</div>
-          <div class="frame-2">
-            <div class="text-wrapper-3">Enter your password here...</div>
+          <div class="password-frame">
+            <input type="text" class="text-wrapper-3" placeholder="Enter your password here..."/>
           </div>
           <div class="frame-3">
             <div class="text-wrapper-5">Log in using Google</div>
@@ -119,7 +119,7 @@
     white-space: nowrap;
   }
   
-  .body .text-wrapper-2 {
+  .body .email-text {
     color: #000000;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 24px;
@@ -133,7 +133,7 @@
     white-space: nowrap;
   }
   
-  .body .div-wrapper {
+  .body .email-frame {
     align-items: center;
     background-color: #fbd1484c;
     border: 2px solid;
@@ -175,7 +175,7 @@
     white-space: nowrap;
   }
   
-  .body .frame-2 {
+  .body .password-frame {
     align-items: center;
     background-color: #fbd1484c;
     border: 2px solid;
@@ -184,7 +184,7 @@
     gap: 10px;
     justify-content: center;
     left: 79px;
-    padding: 5px 100px 5px 0px;
+    padding: 2px 2px 2px 2px;
     position: absolute;
     top: 341px;
     width: 422px;
