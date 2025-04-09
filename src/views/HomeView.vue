@@ -117,14 +117,6 @@ export default {
   methods: {
     gotoSDG() {
       window.open("https://sdgs.un.org/goals/goal11", "_blank");
-    },
-
-    goToCommunity() {
-      this.$router.push("/community");
-    },
-
-    goToAbout() {
-      this.$router.push("/about");
     }
   },
 };
