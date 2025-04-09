@@ -5,13 +5,19 @@
     <button class="btn-header">SUSTAINABILITY</button>
     <button class="btn-header" @click="goToCommunity">COMMUNITY</button>
     </div>
-    <button class="login-btn">LOGIN</button>
+    <button class="login-btn" @click="goToLogin">{{ isLoggedIn ? loggedInUser : 'LOGIN' }}</button>
 </nav>
 </template>
 <script>
 import { useRouter } from 'vue-router'
 export default {
     name: 'Navbar',
+    data() {
+        return {
+            isLoggedIn: false,
+            loggedInUser: ""
+    };
+    },
     setup() {
         const router = useRouter()
 
@@ -23,9 +29,13 @@ export default {
             router.push({ name: 'community' })
         }
 
+        const goToLogin = () => {
+            router.push({ name: 'login' })
+        }
         return {
             goToAbout,
-            goToCommunity
+            goToCommunity,
+            goToLogin,
         }
     }
 }
