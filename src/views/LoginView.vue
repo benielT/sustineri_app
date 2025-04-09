@@ -11,7 +11,7 @@
           <div class="div">Log In</div>
           <div class="text-wrapper-2">Email Address</div>
           <div class="div-wrapper">
-            <p class="text-wrapper-3">Enter your email address here...</p>
+            <input type="text" class="text-wrapper-3" placeholder="Enter your email here..."/>
           </div>
           <div class="text-wrapper-4">Password</div>
           <div class="frame-2">
@@ -39,23 +39,27 @@
   </script>
   
   <style>
+  
+
   .body {
     background-color: #ffffff;
-    height: 960px;
-    width: 1440px;
-  }
+    display: grid;
+    height: 100vh; /* Height window (vh) */
+   }
   
   .body .overlap {
     background-color: #dddddd;
-    height: 960px;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
   }
   
-  .body .login-post {
+  .login-post {
     background-color: #f6f6f6;
     height: 841px;
-    left: 430px;
+    left: 35vw;
     position: relative;
-    top: 59px;
+    top: 10vh;
     width: 579px;
   }
   
@@ -138,14 +142,15 @@
     gap: 10px;
     justify-content: center;
     left: 79px;
-    padding: 5px 100px 5px 0px;
+    padding: 2px 2px 2px 2px;
     position: absolute;
     top: 215px;
     width: 422px;
   }
   
   .body .text-wrapper-3 {
-    color: #88888d;
+    color: #2c2c2d;
+    background-color: #fbd1484c;
     font-family: "Oswald-Regular", Helvetica;
     font-size: 20px;
     font-weight: 400;
@@ -153,7 +158,7 @@
     line-height: 48px;
     margin-top: -1.00px;
     position: relative;
-    width: 280px;
+    width: 422px;
   }
   
   .body .text-wrapper-4 {
