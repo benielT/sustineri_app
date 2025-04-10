@@ -50,9 +50,7 @@ import { useRouter } from 'vue-router';
 
 export default {
   name: "login",
-  components: {
-        Navbar,
-    },
+
   data() {
     return {
       email: "",
