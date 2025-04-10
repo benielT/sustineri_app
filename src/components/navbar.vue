@@ -9,7 +9,9 @@
 </nav>
 </template>
 <script>
-import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@/data/store';
+
 export default {
     name: 'Navbar',
     data() {
@@ -17,6 +19,18 @@ export default {
             isLoggedIn: false,
             loggedInUser: ""
     };
+    },
+    mounted() {
+        const userStore = useUserStore();
+        const user = userStore.user;
+        if (user) {
+            this.isLoggedIn = true;
+            this.loggedInUser = user.name;
+        }
+        else   {
+            this.isLoggedIn = false;
+            this.loggedInUser = "";
+        }
     },
     setup() {
         const router = useRouter()
