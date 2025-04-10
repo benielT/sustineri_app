@@ -5,15 +5,8 @@
         <img class="background" alt="Background" :src="background" />
 
         <div class="logo" />
-
-        <div class="header-buttons">
-          <button class="btn-header" @click="goToAbout">OUR STORY</button>
-          <button class="btn-header">SUSTAINABILITY</button>
-          <button class="btn-header" @click="goToCommunity">COMMUNITY</button>
-        </div>
-
-        <button class="login-btn">LOGIN</button>
-
+        <Navbar />
+        
         <div class="hero-section-heading">
           lorem ipsum
           <br />
@@ -89,9 +82,13 @@ import TBDImage from "@/assets/tbd_image.png";
 import background from "@/assets/background.png";
 import group12 from "@/assets/sustainable_cities_logo.png";
 import arrow from "@/assets/arrow.png";
+import Navbar from "@/components/navbar.vue";
 
 export default {
   name: "Main",
+    components: {
+        Navbar,
+    },
   data() {
     return {
       TBDImage,
@@ -120,14 +117,6 @@ export default {
   methods: {
     gotoSDG() {
       window.open("https://sdgs.un.org/goals/goal11", "_blank");
-    },
-
-    goToCommunity() {
-      this.$router.push("/community");
-    },
-
-    goToAbout() {
-      this.$router.push("/about");
     }
   },
 };
@@ -164,29 +153,6 @@ export default {
   position: absolute;
   top: 60px;
   width: 60px;
-}
-
-.desktop-main .header-buttons {
-  height: 48px;
-  left: 1097px;
-  position: absolute;
-  top: 66px;
-  width: 526px;
-  display: flex;
-  flex-direction: row;
-}
-
-.desktop-main .btn-header {
-  color: #dddddd;
-  font-family: "Bebas Neue-Regular", Helvetica;
-  background: none;
-  font-size: 36px;
-  font-weight: 400;
-  line-height: 48px;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  border: none;
 }
 
 .desktop-main .text-wrapper {
@@ -226,45 +192,6 @@ export default {
   position: absolute;
   top: 0;
   white-space: nowrap;
-}
-
-.desktop-main .login-btn {
-  background: none;
-  align-items: center;
-  border: 4px solid;
-  border-color: #dddddd;
-  font-family: "Bebas Neue-Regular", Helvetica;
-  box-sizing: border-box;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  left: 1661px;
-  padding: 6px 16px;
-  position: absolute;
-  top: 56px;
-}
-
-.desktop-main .login-btn:hover {
-  background-color: #dddddd;
-  color: #181818;
-}
-
-.desktop-main .login-btn:active {
-  background-color: #dddddd;
-  color: #181818;
-  opacity: 0.8;
-}
-
-.desktop-main .login-btn {
-  color: #dddddd;
-  font-family: "Bebas Neue-Regular", Helvetica;
-  font-size: 36px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 48px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
 }
 
 .desktop-main .hero-section-heading {
