@@ -1,43 +1,105 @@
 <template>
     <div class="login">
-      <div class="overlap">
-        <div class="login-post">
-          <div class="frame">
-            <div class="overlap-group">
-              <button class="login-button">
-                <div class="login-button-text">Log in</div>
-              </button>
-            </div>
+    <div class="overlap">
+      <div class="login-post">
+        <div class="frame">
+          <div class="overlap-group">
+            <button class="login-button" @click="handleLogin">
+              <div class="login-button-text">Log in</div>
+            </button>
           </div>
-          <div class="div">Log In</div>
-          <div class="email-text">Email Address</div>
-          <div class="email-frame">
-            <input type="text" class="text-wrapper-3" placeholder="Enter your email here..."/>
-          </div>
-          <div class="text-wrapper-4">Password</div>
-          <div class="password-frame">
-            <input type="text" class="text-wrapper-3" placeholder="Enter your password here..."/>
-          </div>
-          <div class="frame-3">
-            <div class="text-wrapper-5">Log in using Google</div>
-          </div>
-          <div class="frame-4">
-            <div class="text-wrapper-5">Log in using Linkedin</div>
-          </div>
-          <p class="not-registered">
-            <span class="span">Not registered? </span>
-            <span class="text-wrapper-6">Register here</span>
-          </p>
         </div>
+        <div class="div">Log In</div>
+        <div class="email-text">Email Address</div>
+        <div class="email-frame">
+        <input
+            type="text"
+            class="text-wrapper-3"
+            placeholder="Enter your email here..."
+            v-model="email"
+          />
+        </div>
+        <div class="text-wrapper-4">Password</div>
+        <div class="password-frame">
+          <input
+            type="password"
+            class="text-wrapper-3"
+            placeholder="Enter your password here..."
+            v-model="password"
+          />
+        </div>
+        <div class="frame-3">
+          <div class="text-wrapper-5">Log in using Google</div>
+        </div>
+        <div class="frame-4">
+          <div class="text-wrapper-5">Log in using Linkedin</div>
+        </div>
+        <p class="not-registered">
+          <span class="span">Not registered? </span>
+          <span class="text-wrapper-6">Register here</span>
+        </p>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "login",
-  };
-  </script>
+  </div>
+</template>
+
+<script>
+import { useUserStore } from '@/data/store';
+import { useRouter } from 'vue-router';
+
+
+export default {
+  name: "login",
+  components: {
+        Navbar,
+    },
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  mounted() {
+    const router = useRouter();
+
+    return {
+        router
+    };
+  },
+  methods: {
+    async handleLogin() { 
+        
+      try {
+        const userStore = useUserStore();
+        
+
+        // Fetch mock user data
+        const response = await fetch("../src/data/mock_users.json");
+        const users = await response.json();
+
+        // Check if the user exists
+        const user = users.find(
+          (u) => u.email === this.email && u.password === this.password
+        );
+
+        if (user) {
+            alert(`Welcome, ${user.name}!`);
+            userStore.setUser(user);
+            // Redirect to the main page
+            this.$router.push({ name: 'home' })
+        } else if (this.email === "" || this.password === "") {
+            alert("Please fill in all fields.");
+        } else {
+            alert("Invalid email or password.");
+        }
+      } catch (error) {
+        console.error("Error logging in:", error);
+        alert("An error occurred while logging in.");
+      }
+    },
+  },
+};
+</script>
   
   <style>
   
